@@ -1,41 +1,108 @@
 staff:
   # --- Leadership ---
-  - name: "Poo Yang Eng"
+  - name: "Eng Poo Yang"
     role: "Chief Executive Officer"
     department: "Management"
-    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    phone: "+6590901069"
     email: "pooyang@appvantage.asia"
 
-  - name: "Junie Lek"
+  - name: "Lek Yam Joo (Junie)"
     role: "Chief Revenue Officer"
     department: "Revenue"
-    phone: "+65XXXXXXXX"          # TODO: Add mobile number
-    email: "junie@appvantage.asia"
+    phone: "+6598308728"
+    email: "junie.lek@appvantage.asia"
+
+  # --- Design ---
+  - name: "Yeo Yong Chiat Derique"
+    role: "Design Director"
+    department: "Design"
+    phone: "+6591133655"
+    email: "derique.yeo@appvantage.asia"
+
+  - name: "Lim Wen Jun (Joey)"
+    role: "UI/UX Designer"
+    department: "Design"
+    phone: "+6596409766"
+    email: "joeylim@appvantage.asia"
+
+  - name: "Lee Cai Jing"
+    role: "UI Designer"
+    department: "Design"
+    phone: "+6592285504"
+    email: "caijing.lee@appvantage.asia"
 
   # --- Technology ---
-  - name: "Adrien Mille"
-    role: "Tech Lead & Full Stack Developer"
+  - name: "Carlo Marbas De Guzman"
+    role: "Tech Lead"
     department: "Technology"
-    phone: "+65XXXXXXXX"          # TODO: Add mobile number
-    email: "adrien@appvantage.asia"
+    phone: "+6584091488"
+    email: "carlo@appvantage.asia"
 
-  # --- Sales & Marketing ---
-  - name: "Edward N"
-    role: "Regional Sales & Marketing Manager"
-    department: "Sales"
-    phone: "+65XXXXXXXX"          # TODO: Add mobile number
-    email: "edward@appvantage.asia"
+  - name: "Ang Wei Chern (Albert)"
+    role: "Fullstack Developer"
+    department: "Technology"
+    phone: "+6588644954"
+    email: "weichern@appvantage.asia"
+
+  - name: "Thia Su Mian"
+    role: "Fullstack Developer"
+    department: "Technology"
+    phone: "+6583282140"
+    email: "sumian.thia@appvantage.asia"
 
   # --- Project Management ---
-  - name: "Joon Kang Tay"
+  - name: "Hidalgo Almira Servillon"
     role: "Project Manager"
     department: "Projects"
-    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    phone: "+6597807770"
+    email: "almira@appvantage.asia"
+
+  - name: "Sarada Lakshmi Medapati"
+    role: "Senior Project Manager"
+    department: "Projects"
+    phone: "+6594578774"
+    email: "sarada.lakshmi@appvantage.asia"
+
+  - name: "Tay Joon Kang"
+    role: "Project Manager"
+    department: "Projects"
+    phone: "+6588099292"
     email: "joonkang@appvantage.asia"
 
-  # TODO: Add more staff as needed. Copy the format above:
-  # - name: "Full Name"
-  #   role: "Job Title"
-  #   department: "Department"
-  #   phone: "+65XXXXXXXX"
-  #   email: "name@appvantage.asia"
+  - name: "Chen Guizhong (Darius)"
+    role: "Senior Project Manager"
+    department: "Projects"
+    phone: "+6590263370"
+    email: "darius.chen@appvantage.asia"
+
+  - name: "Arena Wee Sok Ee"
+    role: "Project Manager"
+    department: "Projects"
+    phone: "+6582015930"
+    email: "arena.wee@appvantage.asia"
+
+  - name: "Cheryl Quek Hui Shan"
+    role: "Senior Project Executive"
+    department: "Projects"
+    phone: "+6594890552"
+    email: "cheryl.quek@appvantage.asia"
+
+  # --- Support ---
+  - name: "Jocelyn Tan Yun Ru"
+    role: "Support Manager"
+    department: "Support"
+    phone: "+6587794425"
+    email: "jocelyn.tan@appvantage.asia"
+
+  # --- HR & Operations ---
+  - name: "Toh Xin Hui"
+    role: "HR & Finance Manager"
+    department: "HR & Finance"
+    phone: "+6596878843"
+    email: "xinhui@appvantage.asia"
+
+  - name: "Choo Wen Ting Angeline"
+    role: "HR & Ops Executive"
+    department: "HR & Operations"
+    phone: "+6582189267"
+    email: "angeline.choo@appvantage.asia"
