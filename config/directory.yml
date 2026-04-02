@@ -1,18 +1,41 @@
 staff:
-  - name: "John Tan"
-    role: "Sales Manager"
+  # --- Leadership ---
+  - name: "Poo Yang Eng"
+    role: "Chief Executive Officer"
+    department: "Management"
+    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    email: "pooyang@appvantage.asia"
+
+  - name: "Junie Lek"
+    role: "Chief Revenue Officer"
+    department: "Revenue"
+    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    email: "junie@appvantage.asia"
+
+  # --- Technology ---
+  - name: "Adrien Mille"
+    role: "Tech Lead & Full Stack Developer"
+    department: "Technology"
+    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    email: "adrien@appvantage.asia"
+
+  # --- Sales & Marketing ---
+  - name: "Edward N"
+    role: "Regional Sales & Marketing Manager"
     department: "Sales"
-    phone: "+6591234567"
-    email: "john@company.com"
+    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    email: "edward@appvantage.asia"
 
-  - name: "Jane Lim"
-    role: "Technical Support Lead"
-    department: "Support"
-    phone: "+6598765432"
-    email: "jane@company.com"
+  # --- Project Management ---
+  - name: "Joon Kang Tay"
+    role: "Project Manager"
+    department: "Projects"
+    phone: "+65XXXXXXXX"          # TODO: Add mobile number
+    email: "joonkang@appvantage.asia"
 
-  - name: "Ahmad Ibrahim"
-    role: "Operations Manager"
-    department: "Operations"
-    phone: "+6590001111"
-    email: "ahmad@company.com"
+  # TODO: Add more staff as needed. Copy the format above:
+  # - name: "Full Name"
+  #   role: "Job Title"
+  #   department: "Department"
+  #   phone: "+65XXXXXXXX"
+  #   email: "name@appvantage.asia"

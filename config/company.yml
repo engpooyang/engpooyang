@@ -1,15 +1,15 @@
-company_name: "Your Company Pte Ltd"
+company_name: "Appvantage"
 
-greeting: "Hello, thank you for calling {company_name}. How may I help you?"
+greeting: "Hello, thank you for calling Appvantage. How may I help you?"
 
 business_hours:
   timezone: "Asia/Singapore"
   weekdays: "09:00-18:00"
-  saturday: "09:00-13:00"
-  sunday: null  # closed
+  saturday: null  # closed
+  sunday: null    # closed
 
 after_hours_message: "Our office is currently closed. I can take a message for you."
 
 emergency_contact:
-  name: "Manager"
-  phone: "+6591234567"
+  name: "Poo Yang Eng"
+  phone: "+65XXXXXXXX"  # TODO: Add actual mobile number
