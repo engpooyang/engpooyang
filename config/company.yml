@@ -1,0 +1,15 @@
+company_name: "Your Company Pte Ltd"
+
+greeting: "Hello, thank you for calling {company_name}. How may I help you?"
+
+business_hours:
+  timezone: "Asia/Singapore"
+  weekdays: "09:00-18:00"
+  saturday: "09:00-13:00"
+  sunday: null  # closed
+
+after_hours_message: "Our office is currently closed. I can take a message for you."
+
+emergency_contact:
+  name: "Manager"
+  phone: "+6591234567"

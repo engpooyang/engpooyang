@@ -1,0 +1,23 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+    restart: unless-stopped
+
+  # Optional: ngrok for exposing webhooks during development
+  # Uncomment and set NGROK_AUTHTOKEN in .env to use
+  # ngrok:
+  #   image: ngrok/ngrok:latest
+  #   command: http app:8000
+  #   environment:
+  #     - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+  #   ports:
+  #     - "4040:4040"
+  #   depends_on:
+  #     - app

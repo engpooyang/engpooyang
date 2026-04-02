@@ -1,0 +1,18 @@
+staff:
+  - name: "John Tan"
+    role: "Sales Manager"
+    department: "Sales"
+    phone: "+6591234567"
+    email: "john@company.com"
+
+  - name: "Jane Lim"
+    role: "Technical Support Lead"
+    department: "Support"
+    phone: "+6598765432"
+    email: "jane@company.com"
+
+  - name: "Ahmad Ibrahim"
+    role: "Operations Manager"
+    department: "Operations"
+    phone: "+6590001111"
+    email: "ahmad@company.com"

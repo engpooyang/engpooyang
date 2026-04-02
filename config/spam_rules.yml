@@ -1,0 +1,66 @@
+# Permanently blocked numbers (auto-populated by repeat offender detection)
+blocked_numbers: []
+
+# Categories of unwanted calls to detect and decline
+spam_categories:
+  sales_calls:
+    keywords:
+      - "promotion"
+      - "special offer"
+      - "limited time"
+      - "exclusive deal"
+      - "discount"
+      - "marketing"
+      - "advertising"
+    action: "decline"
+
+  loan_offers:
+    keywords:
+      - "loan"
+      - "credit"
+      - "financing"
+      - "interest rate"
+      - "mortgage offer"
+      - "debt consolidation"
+      - "refinancing"
+    action: "decline"
+
+  insurance:
+    keywords:
+      - "insurance"
+      - "coverage"
+      - "policy"
+      - "premium"
+      - "life insurance"
+      - "health insurance"
+    action: "decline"
+
+  scams:
+    keywords:
+      - "free prize"
+      - "you have won"
+      - "congratulations"
+      - "claim your reward"
+      - "lucky winner"
+      - "urgent action required"
+    action: "hang_up"
+
+  ai_robocalls:
+    keywords:
+      - "press 1"
+      - "press 2"
+      - "automated message"
+      - "this is an automated call"
+      - "recorded message"
+    detect_ai_voice: true
+    action: "hang_up"
+
+# Repeat caller protection
+repeat_caller:
+  window_minutes: 30
+  max_calls_before_block: 2
+  block_duration_hours: 24
+  auto_add_to_blocked: true
+
+# Decline message (kept short)
+decline_message: "We're not interested, thank you. Goodbye."
