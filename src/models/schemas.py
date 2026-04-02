@@ -109,7 +109,7 @@ class ReportSpamResponse(BaseModel):
 
 
 class LookupStaffRequest(BaseModel):
-    query: str  # name or department
+    query: str  # person name only
 
 
 class LookupStaffResponse(BaseModel):
@@ -118,6 +118,7 @@ class LookupStaffResponse(BaseModel):
     role: str = ""
     department: str = ""
     phone: str = ""
+    email: str = ""
     available: bool = False
     message: str = ""
 
@@ -137,8 +138,10 @@ class TakeMessageRequest(BaseModel):
     caller_name: str
     caller_company: str = ""
     caller_phone: str
+    caller_email: str = ""
     message: str
     intended_recipient: str = ""
+    staff_email: str = ""
 
 
 class TakeMessageResponse(BaseModel):

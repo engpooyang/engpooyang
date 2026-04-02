@@ -39,41 +39,31 @@ def _is_business_hours() -> bool:
 
 
 def _match_staff(query: str) -> StaffMember | None:
-    """Find a staff member by name or department (fuzzy match)."""
+    """Find a staff member by name only. Department/role lookups are not supported."""
     directory = get_directory_config()
     query_lower = query.lower()
 
-    # Exact department match
+    # Exact full name match
     for staff in directory.staff:
-        if staff.department.lower() == query_lower:
+        if staff.name.lower() == query_lower:
             return staff
 
-    # Partial name match
+    # Partial name match (first name, last name, or nickname in parentheses)
     for staff in directory.staff:
         if query_lower in staff.name.lower():
-            return staff
-
-    # Partial role match
-    for staff in directory.staff:
-        if query_lower in staff.role.lower():
-            return staff
-
-    # Partial department match
-    for staff in directory.staff:
-        if query_lower in staff.department.lower():
             return staff
 
     return None
 
 
 def lookup_staff(query: str) -> LookupStaffResponse:
-    """Look up a staff member and check availability."""
+    """Look up a staff member by name and check availability."""
     staff = _match_staff(query)
 
     if staff is None:
         return LookupStaffResponse(
             found=False,
-            message=f"No staff member found matching '{query}'.",
+            message=f"No staff member found matching '{query}'. Please collect the caller's contact details so we can have someone call them back.",
         )
 
     available = _is_business_hours()
@@ -86,8 +76,9 @@ def lookup_staff(query: str) -> LookupStaffResponse:
             role=staff.role,
             department=staff.department,
             phone=staff.phone,
+            email=staff.email,
             available=False,
-            message=config.after_hours_message,
+            message=f"{staff.name} is not available right now. {config.after_hours_message}",
         )
 
     return LookupStaffResponse(
@@ -96,6 +87,7 @@ def lookup_staff(query: str) -> LookupStaffResponse:
         role=staff.role,
         department=staff.department,
         phone=staff.phone,
+        email=staff.email,
         available=True,
-        message=f"{staff.name} ({staff.role}) is available.",
+        message=f"{staff.name} ({staff.role}) is available for transfer.",
     )
