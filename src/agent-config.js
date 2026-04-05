@@ -2,30 +2,53 @@
  * ElevenLabs Conversational AI agent configuration for the Porsche
  * Aftersales Voice Support Agent (MAIA).
  *
- * This config mirrors what is deployed in ElevenLabs. The setup.js script
- * uses this to create/update the agent via the API.
+ * Agent ID: agent_2501knem51tge3g9mp8a515k15a0
+ * Dashboard: https://elevenlabs.io/app/conversational-ai/agents/agent_2501knem51tge3g9mp8a515k15a0
+ *
+ * IMPORTANT: Do not use eleven_multilingual_v2 or eleven_v3_conversational
+ * as the TTS model. Use eleven_flash_v2 (the platform default for
+ * conversational agents). Do not embed large JSON in the system prompt —
+ * use RAG with the knowledge base instead.
  */
 
-const { buildSystemPrompt } = require('./system-prompt');
-
 function buildAgentConfig() {
-  const systemPrompt = buildSystemPrompt();
-
   return {
-    name: "Porsche Aftersales Support",
+    name: "Porsche Aftersales Support v2",
     tags: ["porsche", "aftersales", "support", "voice-agent"],
     conversation_config: {
       agent: {
         prompt: {
-          prompt: systemPrompt,
-          llm: "gpt-oss-120b",
-          temperature: 0.4,
-          max_tokens: 512,
+          prompt: `You are MAIA, the Porsche Aftersales Support Specialist. You are a professional voice assistant representing Porsche customer care.
+
+You help Porsche owners with service scheduling, warranty questions, parts inquiries, recall information, maintenance advice, and general ownership questions. You have access to a knowledge base with detailed Porsche aftersales information — use it to provide accurate answers.
+
+Voice Guidelines:
+- Keep responses to 2-4 short sentences. This is a voice conversation.
+- Never use markdown, bullet points, or special characters.
+- Say numbers naturally: fifty thousand miles, not 50,000 miles.
+- Be warm, professional, and confident. Reflect the premium Porsche brand.
+
+Call Handling:
+- Ask for the customer name early to personalize the conversation.
+- Ask for their Porsche model and year when relevant.
+- If you cannot resolve an issue, offer to connect them with a Porsche specialist.
+- Before ending, ask if there is anything else you can help with.
+
+Policies:
+- Never fabricate information. If unsure, say so and offer to transfer.
+- All recall repairs are free regardless of warranty status.
+- Recommend authorized Porsche dealers for service and parts.
+- Provide estimated price ranges, not exact prices.
+- For emergencies, direct to Porsche Roadside Assistance at 1-800-PORSCHE.
+- Never ask for credit card numbers or other sensitive data.`,
+          llm: "gpt-4o-mini",
+          temperature: 0.5,
+          max_tokens: 200,
           tools: [
             {
               type: "system",
               name: "end_call",
-              description: "End the phone call when the customer confirms they have no more questions.",
+              description: "End the call when the customer confirms they have no more questions.",
             },
             {
               type: "system",
@@ -39,68 +62,44 @@ function buildAgentConfig() {
           },
         },
         first_message:
-          "Thank you for calling Porsche Aftersales Support. I'm your Porsche virtual assistant, MAIA. How may I assist you today?",
+          "Thank you for calling Porsche Aftersales Support. I am your virtual assistant, MAIA. How may I assist you today?",
         language: "en",
       },
       asr: {
         quality: "high",
-        provider: "scribe_realtime",
         keywords: [
-          // Brand & agent
           "Porsche", "MAIA",
-          // Current model lines
-          "911", "718", "Taycan", "Cayenne", "Macan", "Panamera",
-          // Historic models (still serviced)
-          "356", "928", "944", "968", "Boxster", "Cayman",
-          // 911 generation codes
+          "911", "718", "356", "928", "944", "968",
           "992", "991", "997", "996", "993", "964",
-          // 718/Boxster/Cayman generation codes
-          "982", "981", "987", "986",
-          // Panamera/Cayenne generation codes
-          "970", "971", "980",
-          // 911 variants
+          "982", "981", "987", "986", "970", "971", "980",
           "Carrera", "Carrera S", "Carrera 4S", "Carrera GTS",
           "Targa", "Cabriolet", "Speedster",
-          // Taycan variants
-          "Taycan 4S", "Taycan Turbo", "Taycan Turbo S", "Taycan Turbo GT",
+          "Taycan", "Taycan 4S", "Taycan Turbo", "Taycan Turbo S", "Taycan Turbo GT",
           "Cross Turismo", "Sport Turismo",
-          // Cayenne variants
-          "Cayenne S", "Cayenne GTS", "Cayenne Turbo", "Cayenne Turbo GT",
+          "Cayenne", "Cayenne S", "Cayenne GTS", "Cayenne Turbo", "Cayenne Turbo GT",
           "Cayenne Coupe", "E-Hybrid",
-          // Macan variants
-          "Macan T", "Macan S", "Macan GTS", "Macan Turbo", "Macan Electric",
-          // Panamera variants
-          "Panamera GTS", "Panamera Turbo", "Panamera Turbo S",
-          // Performance variants
+          "Macan", "Macan T", "Macan S", "Macan GTS", "Macan Turbo", "Macan Electric",
+          "Panamera", "Panamera GTS", "Panamera Turbo", "Panamera Turbo S",
+          "Boxster", "Cayman", "Spyder",
           "Turbo", "Turbo S", "Turbo GT",
           "GT3", "GT3 RS", "GT2 RS", "GT4", "GT4 RS", "GTS", "S/T",
-          "Spyder", "Carrera GT",
-          // Transmission & drivetrain
           "PDK", "Tiptronic", "eTorque",
-          // Chassis & dynamics
           "PASM", "PCCB", "PCM", "PSM", "PDCC", "PDLS", "PTV",
           "Sport Chrono", "Launch Control", "InnoDrive", "Porsche Connect",
-          // Service & ownership programs
-          "Tequipment", "Exclusive Manufaktur", "Porsche Classic",
-          "Porsche Approved", "CPO", "PSMP", "Porsche Center",
-          "Porsche Finder", "Roadside Assistance", "NHTSA",
-          // Tire markings
+          "Tequipment", "Exclusive Manufaktur", "Porsche Classic", "Porsche Approved",
+          "CPO", "PSMP", "Porsche Center", "Porsche Finder", "Roadside Assistance", "NHTSA",
           "N-rated", "N0", "N1", "N2",
-          // Packages & trims
-          "Weissach", "Weissach Package", "Heritage Design", "Sport Design",
-          "Clubsport", "Lightweight", "Manthey",
-          // Materials
+          "Weissach", "Heritage Design", "Sport Design", "Clubsport", "Manthey",
           "Alcantara", "Nappa", "Paint to Sample",
-          // Powertrain terms
           "flat-six", "twin-turbo", "T-Hybrid", "plug-in hybrid",
-          "Performance Battery Plus",
+          "Carrera GT", "Performance Battery Plus",
         ],
       },
       tts: {
-        model_id: "eleven_v3_conversational", // Required for conversational AI — do NOT use eleven_multilingual_v2
-        voice_id: "hG4HNYxEsgdhtFqDiSjp",
+        // eleven_flash_v2 is the platform default for conversational agents.
+        // Do NOT change to eleven_multilingual_v2 or eleven_v3_conversational.
+        voice_id: "hG4HNYxEsgdhtFqDiSjp", // MAIA generated voice
         stability: 0.65,
-        expressive_mode: true,
       },
       conversation: {
         max_duration_seconds: 600,
@@ -122,42 +121,25 @@ function buildAgentConfig() {
       },
     },
     platform_settings: {
-      guardrails: {
-        version: "1",
-        focus: { is_enabled: true },
-        prompt_injection: { is_enabled: true },
-        content: {
-          execution_mode: "blocking",
-          config: {
-            profanity: { is_enabled: true, threshold: "medium" },
-            harassment: { is_enabled: true, threshold: "medium" },
-            violence: { is_enabled: true, threshold: "medium" },
-            self_harm: { is_enabled: true, threshold: "medium" },
-          },
-          trigger_action: { type: "retry" },
-        },
-      },
       evaluation: {
         criteria: [
           {
             id: "accurate_info",
             name: "Accurate Information",
             conversation_goal_prompt: "Evaluate whether the agent provided correct information from the knowledge base. No fabricated details.",
+            description: "Agent provides correct information",
           },
           {
             id: "brand_tone",
             name: "Professional Brand Tone",
-            conversation_goal_prompt: "Evaluate whether the agent maintained a professional, courteous Porsche brand tone.",
+            conversation_goal_prompt: "Evaluate whether the agent maintained a professional Porsche brand tone.",
+            description: "Agent maintains premium brand voice",
           },
           {
             id: "issue_resolution",
             name: "Issue Resolution",
             conversation_goal_prompt: "Evaluate whether the customer question was fully addressed or a clear next step provided.",
-          },
-          {
-            id: "appropriate_escalation",
-            name: "Appropriate Escalation",
-            conversation_goal_prompt: "Evaluate whether the agent correctly offered to transfer to a specialist when needed.",
+            description: "Customer question fully answered",
           },
         ],
       },
