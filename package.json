@@ -1,0 +1,18 @@
+{
+  "name": "porsche-aftersales-voice-agent",
+  "version": "1.0.0",
+  "description": "Porsche Aftersales Voice Support Agent powered by ElevenLabs Conversational AI and Claude",
+  "main": "setup.js",
+  "scripts": {
+    "setup": "node setup.js",
+    "start": "node setup.js"
+  },
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.41.1",
+    "dotenv": "^16.4.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

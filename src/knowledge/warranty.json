@@ -1,0 +1,102 @@
+{
+  "new_vehicle_warranty": {
+    "name": "Porsche New Vehicle Limited Warranty",
+    "duration_years": 4,
+    "mileage_limit": 50000,
+    "coverage": [
+      "Bumper-to-bumper coverage for defects in materials and workmanship",
+      "Powertrain components (engine, transmission, drivetrain)",
+      "Electrical and electronic systems",
+      "Body and paint defects",
+      "Factory-installed accessories and equipment"
+    ],
+    "exclusions": [
+      "Normal wear and tear (brake pads, wiper blades, tires, bulbs)",
+      "Damage from accidents, misuse, or neglect",
+      "Modifications or aftermarket parts",
+      "Damage from improper maintenance",
+      "Environmental damage (hail, flood, etc.)",
+      "Competition or track use damage"
+    ],
+    "transferable": true,
+    "deductible": "None"
+  },
+  "corrosion_warranty": {
+    "name": "Corrosion Perforation Warranty",
+    "duration_years": 12,
+    "coverage": "Protection against rust-through perforation of body panels from the inside out",
+    "transferable": true
+  },
+  "emissions_warranty": {
+    "name": "Federal Emissions Warranty",
+    "duration_years": 8,
+    "mileage_limit": 80000,
+    "coverage": "Major emissions control components including catalytic converters and ECU"
+  },
+  "hybrid_ev_battery_warranty": {
+    "name": "High-Voltage Battery Warranty",
+    "applicable_models": ["Taycan", "Cayenne E-Hybrid", "Panamera E-Hybrid"],
+    "duration_years": 8,
+    "mileage_limit": 100000,
+    "coverage": "High-voltage battery pack defects and capacity degradation below 70%",
+    "note": "Separate from the main vehicle warranty — provides extended protection for EV/hybrid battery systems"
+  },
+  "porsche_approved_cpo": {
+    "name": "Porsche Approved Certified Pre-Owned",
+    "warranty_duration_years": 2,
+    "mileage_limit": "Unlimited",
+    "requirements": [
+      "Vehicle must be under 15 years old",
+      "Must pass a 111-point inspection",
+      "Complete vehicle history review",
+      "Must be purchased from an authorized Porsche dealer"
+    ],
+    "coverage": "Comprehensive coverage similar to new vehicle warranty",
+    "includes": [
+      "24/7 Porsche Roadside Assistance",
+      "Trip interruption coverage",
+      "Rental car reimbursement",
+      "SiriusXM 3-month trial"
+    ],
+    "transferable": true,
+    "deductible": "None"
+  },
+  "extended_warranty": {
+    "name": "Porsche Extended Warranty",
+    "description": "Optional extended coverage available for purchase before your factory warranty expires",
+    "plans": [
+      {
+        "name": "Porsche Platinum",
+        "coverage": "Most comprehensive — covers nearly all mechanical and electrical components",
+        "recommended_for": "Owners planning to keep their vehicle long-term"
+      },
+      {
+        "name": "Porsche Gold",
+        "coverage": "Covers major mechanical components including powertrain, electrical, and climate systems",
+        "recommended_for": "Balanced coverage at moderate cost"
+      }
+    ],
+    "general_terms": {
+      "maximum_duration_years": 10,
+      "maximum_mileage": 150000,
+      "deductible_options": ["$0", "$100", "$250"],
+      "transferable": true,
+      "where_to_service": "Any authorized Porsche dealer nationwide"
+    }
+  },
+  "roadside_assistance": {
+    "name": "Porsche Roadside Assistance",
+    "included_with": "New vehicle warranty and CPO warranty",
+    "duration_years": 4,
+    "services": [
+      "Towing to nearest Porsche dealer",
+      "Flat tire assistance",
+      "Jump start service",
+      "Lockout assistance",
+      "Emergency fuel delivery",
+      "Trip interruption benefits (hotel, meals, rental car)"
+    ],
+    "contact": "1-800-PORSCHE (1-800-767-7243)",
+    "available": "24 hours a day, 7 days a week"
+  }
+}

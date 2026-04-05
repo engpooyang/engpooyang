@@ -1,0 +1,47 @@
+{
+  "active_recalls": [
+    {
+      "campaign_number": "24V-567",
+      "date_issued": "2024-08-15",
+      "affected_models": ["2022-2024 Porsche Taycan"],
+      "affected_components": "High-Voltage Battery Management System",
+      "description": "The battery management software may incorrectly calculate the state of charge, potentially causing unexpected power reduction.",
+      "remedy": "Dealers will update the battery management software at no cost. The update takes approximately 2 hours.",
+      "status": "Active — Contact your dealer to schedule"
+    },
+    {
+      "campaign_number": "24V-432",
+      "date_issued": "2024-06-20",
+      "affected_models": ["2023-2024 Porsche Cayenne"],
+      "affected_components": "Rear Suspension Control Arm",
+      "description": "The rear suspension control arm bolts may not have been torqued to specification during manufacturing, which could lead to loosening over time.",
+      "remedy": "Dealers will inspect and re-torque or replace the rear control arm bolts at no cost. Approximately 1 hour service time.",
+      "status": "Active — Contact your dealer to schedule"
+    },
+    {
+      "campaign_number": "24V-298",
+      "date_issued": "2024-03-10",
+      "affected_models": ["2023-2025 Porsche 911 (992.2)"],
+      "affected_components": "Passenger Airbag Sensor",
+      "description": "The passenger seat occupancy sensor may intermittently malfunction, potentially affecting airbag deployment in a collision.",
+      "remedy": "Dealers will replace the passenger seat occupancy sensor at no cost. Approximately 1.5 hours service time.",
+      "status": "Active — Contact your dealer to schedule"
+    },
+    {
+      "campaign_number": "23V-891",
+      "date_issued": "2023-11-05",
+      "affected_models": ["2020-2023 Porsche Macan"],
+      "affected_components": "Fuel Delivery Module",
+      "description": "A fuel delivery module component may develop a crack, potentially leading to a fuel leak.",
+      "remedy": "Dealers will replace the fuel delivery module at no cost. Approximately 2 hours service time.",
+      "status": "Active — Contact your dealer to schedule"
+    }
+  ],
+  "recall_general_info": {
+    "how_to_check": "You can check if your vehicle has open recalls by providing your VIN (Vehicle Identification Number) to your Porsche dealer or by visiting the NHTSA website at nhtsa.gov/recalls.",
+    "cost": "All recall repairs are performed at no cost to the vehicle owner, regardless of warranty status.",
+    "where_to_service": "Recall repairs must be performed at an authorized Porsche dealer.",
+    "timeline": "We recommend scheduling your recall repair as soon as possible. Parts availability varies by campaign.",
+    "rental_car": "If a recall repair requires your vehicle to be at the dealer for an extended period, a loaner or rental vehicle may be provided. Check with your dealer for availability."
+  }
+}

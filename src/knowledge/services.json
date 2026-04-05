@@ -1,0 +1,130 @@
+{
+  "service_intervals": {
+    "911": {
+      "model_name": "Porsche 911 (992)",
+      "engine_types": ["3.0L Twin-Turbo Flat-6", "3.7L Twin-Turbo Flat-6", "4.0L Naturally Aspirated Flat-6"],
+      "minor_service": {
+        "interval_miles": 10000,
+        "interval_months": 12,
+        "includes": ["Engine oil and filter change", "Multi-point inspection", "Brake fluid level check", "Tire pressure and condition check", "Cabin air filter inspection"],
+        "estimated_cost_usd": "350-550"
+      },
+      "major_service": {
+        "interval_miles": 40000,
+        "interval_months": 48,
+        "includes": ["All minor service items", "Spark plug replacement", "Air filter replacement", "Brake fluid flush", "Transmission fluid check", "Coolant system inspection", "Drive belt inspection"],
+        "estimated_cost_usd": "1200-2000"
+      },
+      "brake_fluid_flush": {
+        "interval_months": 24,
+        "estimated_cost_usd": "250-400"
+      }
+    },
+    "cayenne": {
+      "model_name": "Porsche Cayenne (E3)",
+      "engine_types": ["3.0L V6 Turbo", "4.0L V8 Twin-Turbo", "3.0L V6 Hybrid"],
+      "minor_service": {
+        "interval_miles": 10000,
+        "interval_months": 12,
+        "includes": ["Engine oil and filter change", "Multi-point inspection", "Brake fluid level check", "Tire rotation", "Cabin air filter inspection"],
+        "estimated_cost_usd": "400-600"
+      },
+      "major_service": {
+        "interval_miles": 40000,
+        "interval_months": 48,
+        "includes": ["All minor service items", "Spark plug replacement", "Air filter replacement", "Brake fluid flush", "Transfer case fluid change", "Differential fluid change", "Coolant flush"],
+        "estimated_cost_usd": "1500-2500"
+      },
+      "brake_fluid_flush": {
+        "interval_months": 24,
+        "estimated_cost_usd": "250-400"
+      }
+    },
+    "taycan": {
+      "model_name": "Porsche Taycan",
+      "engine_types": ["Single Motor RWD", "Dual Motor AWD", "Turbo", "Turbo S", "Turbo GT"],
+      "minor_service": {
+        "interval_miles": 20000,
+        "interval_months": 24,
+        "includes": ["Multi-point inspection", "Cabin air filter replacement", "Brake fluid level check", "Tire pressure and condition check", "Battery health check", "Software update check"],
+        "estimated_cost_usd": "200-400"
+      },
+      "major_service": {
+        "interval_miles": 40000,
+        "interval_months": 48,
+        "includes": ["All minor service items", "Brake fluid flush", "Coolant system check", "High-voltage battery inspection", "Drive unit fluid check", "Air conditioning service"],
+        "estimated_cost_usd": "600-1200"
+      },
+      "note": "Electric vehicles require less frequent maintenance. No oil changes or spark plug replacements needed."
+    },
+    "macan": {
+      "model_name": "Porsche Macan",
+      "engine_types": ["2.0L Turbo I4", "2.9L V6 Twin-Turbo", "Electric (Macan EV)"],
+      "minor_service": {
+        "interval_miles": 10000,
+        "interval_months": 12,
+        "includes": ["Engine oil and filter change", "Multi-point inspection", "Brake fluid level check", "Tire rotation", "Cabin air filter inspection"],
+        "estimated_cost_usd": "350-500"
+      },
+      "major_service": {
+        "interval_miles": 40000,
+        "interval_months": 48,
+        "includes": ["All minor service items", "Spark plug replacement", "Air filter replacement", "Brake fluid flush", "Transfer case fluid change", "Coolant flush"],
+        "estimated_cost_usd": "1200-2000"
+      },
+      "brake_fluid_flush": {
+        "interval_months": 24,
+        "estimated_cost_usd": "250-350"
+      }
+    },
+    "panamera": {
+      "model_name": "Porsche Panamera",
+      "engine_types": ["2.9L V6 Twin-Turbo", "4.0L V8 Twin-Turbo", "2.9L V6 Hybrid"],
+      "minor_service": {
+        "interval_miles": 10000,
+        "interval_months": 12,
+        "includes": ["Engine oil and filter change", "Multi-point inspection", "Brake fluid level check", "Tire pressure and condition check", "Cabin air filter inspection"],
+        "estimated_cost_usd": "400-600"
+      },
+      "major_service": {
+        "interval_miles": 40000,
+        "interval_months": 48,
+        "includes": ["All minor service items", "Spark plug replacement", "Air filter replacement", "Brake fluid flush", "Transmission fluid service", "Coolant flush"],
+        "estimated_cost_usd": "1500-2500"
+      },
+      "brake_fluid_flush": {
+        "interval_months": 24,
+        "estimated_cost_usd": "250-400"
+      }
+    },
+    "718": {
+      "model_name": "Porsche 718 Boxster/Cayman",
+      "engine_types": ["2.0L Turbo Flat-4", "2.5L Turbo Flat-4", "4.0L Naturally Aspirated Flat-6"],
+      "minor_service": {
+        "interval_miles": 10000,
+        "interval_months": 12,
+        "includes": ["Engine oil and filter change", "Multi-point inspection", "Brake fluid level check", "Tire pressure and condition check", "Cabin air filter inspection"],
+        "estimated_cost_usd": "350-500"
+      },
+      "major_service": {
+        "interval_miles": 40000,
+        "interval_months": 48,
+        "includes": ["All minor service items", "Spark plug replacement", "Air filter replacement", "Brake fluid flush", "Transmission fluid check", "Coolant system inspection"],
+        "estimated_cost_usd": "1100-1800"
+      },
+      "brake_fluid_flush": {
+        "interval_months": 24,
+        "estimated_cost_usd": "250-400"
+      }
+    }
+  },
+  "general_maintenance_tips": [
+    "Follow the Porsche-recommended maintenance schedule in your owner's manual",
+    "Use only Porsche-approved oils and fluids for optimal performance",
+    "Ceramic composite brakes (PCCB) require specialized inspection — do not use aftermarket pads",
+    "Tire replacement should use OEM-approved tire specifications (N-rated tires)",
+    "Keep your Porsche Connect system updated for the latest diagnostics features",
+    "Store your vehicle in a climate-controlled environment when possible",
+    "If your vehicle has been sitting for extended periods, schedule a battery health check"
+  ]
+}
