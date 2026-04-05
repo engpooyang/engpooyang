@@ -46,10 +46,54 @@ function buildAgentConfig() {
         quality: "high",
         provider: "scribe_realtime",
         keywords: [
-          "Porsche", "Cayenne", "Taycan", "Macan", "Panamera", "Carrera",
-          "Targa", "Turbo", "PCCB", "PDK", "PASM", "PCM", "PSM",
-          "Tequipment", "N-rated", "CPO", "Boxster", "Cayman",
-          "GT3", "GT4", "GTS", "Turbo S", "MAIA", "992", "718",
+          // Brand & agent
+          "Porsche", "MAIA",
+          // Current model lines
+          "911", "718", "Taycan", "Cayenne", "Macan", "Panamera",
+          // Historic models (still serviced)
+          "356", "928", "944", "968", "Boxster", "Cayman",
+          // 911 generation codes
+          "992", "991", "997", "996", "993", "964",
+          // 718/Boxster/Cayman generation codes
+          "982", "981", "987", "986",
+          // Panamera/Cayenne generation codes
+          "970", "971", "980",
+          // 911 variants
+          "Carrera", "Carrera S", "Carrera 4S", "Carrera GTS",
+          "Targa", "Cabriolet", "Speedster",
+          // Taycan variants
+          "Taycan 4S", "Taycan Turbo", "Taycan Turbo S", "Taycan Turbo GT",
+          "Cross Turismo", "Sport Turismo",
+          // Cayenne variants
+          "Cayenne S", "Cayenne GTS", "Cayenne Turbo", "Cayenne Turbo GT",
+          "Cayenne Coupe", "E-Hybrid",
+          // Macan variants
+          "Macan T", "Macan S", "Macan GTS", "Macan Turbo", "Macan Electric",
+          // Panamera variants
+          "Panamera GTS", "Panamera Turbo", "Panamera Turbo S",
+          // Performance variants
+          "Turbo", "Turbo S", "Turbo GT",
+          "GT3", "GT3 RS", "GT2 RS", "GT4", "GT4 RS", "GTS", "S/T",
+          "Spyder", "Carrera GT",
+          // Transmission & drivetrain
+          "PDK", "Tiptronic", "eTorque",
+          // Chassis & dynamics
+          "PASM", "PCCB", "PCM", "PSM", "PDCC", "PDLS", "PTV",
+          "Sport Chrono", "Launch Control", "InnoDrive", "Porsche Connect",
+          // Service & ownership programs
+          "Tequipment", "Exclusive Manufaktur", "Porsche Classic",
+          "Porsche Approved", "CPO", "PSMP", "Porsche Center",
+          "Porsche Finder", "Roadside Assistance", "NHTSA",
+          // Tire markings
+          "N-rated", "N0", "N1", "N2",
+          // Packages & trims
+          "Weissach", "Weissach Package", "Heritage Design", "Sport Design",
+          "Clubsport", "Lightweight", "Manthey",
+          // Materials
+          "Alcantara", "Nappa", "Paint to Sample",
+          // Powertrain terms
+          "flat-six", "twin-turbo", "T-Hybrid", "plug-in hybrid",
+          "Performance Battery Plus",
         ],
       },
       tts: {
