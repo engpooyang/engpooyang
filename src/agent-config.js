@@ -97,6 +97,7 @@ function buildAgentConfig() {
         ],
       },
       tts: {
+        model_id: "eleven_v3_conversational", // Required for conversational AI — do NOT use eleven_multilingual_v2
         voice_id: "hG4HNYxEsgdhtFqDiSjp",
         stability: 0.65,
         expressive_mode: true,
