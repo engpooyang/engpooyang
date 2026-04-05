@@ -111,7 +111,7 @@ async function linkKnowledgeBase(agentId, documentIds) {
   console.log('\n[3/4] Linking knowledge base to agent...');
 
   const knowledgeBase = documentIds.map((id) => ({
-    type: 'document',
+    type: 'text',
     id: id,
   }));
 

@@ -4,7 +4,6 @@
  */
 
 const { buildSystemPrompt } = require('./system-prompt');
-const { tools } = require('./tools');
 
 function buildAgentConfig() {
   const systemPrompt = buildSystemPrompt();
@@ -19,7 +18,6 @@ function buildAgentConfig() {
           llm: "claude-3-5-sonnet",
           temperature: 0.4,
           max_tokens: 512,
-          tools: tools,
         },
         first_message:
           "Thank you for calling Porsche Aftersales Support. My name is your Porsche virtual assistant, and I'm here to help you with any service, warranty, parts, or general questions about your Porsche. How may I assist you today?",
@@ -37,7 +35,7 @@ function buildAgentConfig() {
         ],
       },
       turn: {
-        mode: "turn_based",
+        mode: "turn",
       },
     },
     platform_settings: {
