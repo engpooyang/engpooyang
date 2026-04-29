@@ -122,6 +122,14 @@ Then use the `end_call` tool.
 (The full transcript is auto-emailed to the team after the call — you do NOT
 need any other tool to send the message.)
 
+IMPORTANT: During every call, mentally note:
+- The caller's name, company, and phone number (if given)
+- WHO they want to speak with (specific staff name, or general inquiry)
+- The purpose/reason for the call
+These are automatically extracted from the conversation and used to route the
+email to the right person. So always confirm the intended recipient clearly
+in the conversation (e.g., "So you'd like [Name] to call you back?").
+
 ## Emergency calls
 If the caller says it's urgent or an emergency, transfer immediately to
 {emergency_contact_name} at {emergency_contact_phone}. Say: "Let me put you
@@ -207,13 +215,76 @@ def build_transfer_rules(directory_path: str) -> list[dict]:
     return transfers
 
 
-def update_agent(api_key: str, agent_id: str, prompt: str) -> None:
-    """PATCH the agent to use the new prompt and strip custom webhook tools.
+def build_data_collection(directory_path: str) -> dict:
+    """Build data_collection fields including staff email routing map."""
+    with open(directory_path) as f:
+        data = yaml.safe_load(f)
 
-    - Removes all custom webhook tools (tool_ids + inline webhook definitions)
-    - Preserves existing system tools (end_call, language_detection)
-    - Configures transfer_to_number with staff directory destinations
-    """
+    staff_email_map = {s["name"]: s["email"] for s in data.get("staff", [])}
+    mapping_lines = ", ".join(
+        f"{name} → {email}" for name, email in staff_email_map.items()
+    )
+
+    return {
+        "caller_name": {
+            "type": "string",
+            "description": "The name of the person calling.",
+        },
+        "caller_company": {
+            "type": "string",
+            "description": "The company the caller represents, if applicable.",
+        },
+        "call_purpose_summary": {
+            "type": "string",
+            "description": "A brief summary of the caller's reason for contacting.",
+        },
+        "call_classification": {
+            "type": "string",
+            "description": "Classification of the call's nature.",
+            "enum": [
+                "potential_client",
+                "existing_partner",
+                "support_inquiry",
+                "general_inquiry",
+                "spam_unimportant",
+                "other",
+            ],
+        },
+        "transfer_status": {
+            "type": "string",
+            "description": "The outcome of directing the call.",
+            "enum": [
+                "transferred",
+                "message_taken",
+                "filtered_out",
+                "could_not_transfer",
+            ],
+        },
+        "contact_number": {
+            "type": "string",
+            "description": "The caller's contact phone number, if given.",
+        },
+        "intended_recipient": {
+            "type": "string",
+            "description": (
+                "The name of the staff member the caller asked to speak "
+                "with. Leave empty if the caller did not name anyone."
+            ),
+        },
+        "recipient_email": {
+            "type": "string",
+            "description": (
+                "The email of the intended recipient. Mapping: "
+                + mapping_lines
+                + ". If no specific person was named, use "
+                "'pooyang@appvantage.asia'. If spam, use 'spam'."
+            ),
+        },
+    }
+
+
+def update_agent(api_key: str, agent_id: str, prompt: str) -> None:
+    """PATCH the agent: prompt, tools, data collection, and workflow."""
     headers = {"xi-api-key": api_key, "Content-Type": "application/json"}
 
     r = httpx.get(f"{API_BASE}/v1/convai/agents/{agent_id}", headers=headers, timeout=30)
@@ -252,7 +323,6 @@ def update_agent(api_key: str, agent_id: str, prompt: str) -> None:
     built_in["transfer_to_number"] = transfer_tool
     prompt_cfg["built_in_tools"] = built_in
 
-    # Also add to tools array for redundancy (ElevenLabs keeps both in sync)
     kept = [t for t in kept if t.get("name") != "transfer_to_number"]
     kept.append(transfer_tool)
     prompt_cfg["tools"] = kept
@@ -260,10 +330,14 @@ def update_agent(api_key: str, agent_id: str, prompt: str) -> None:
     agent_cfg["prompt"] = prompt_cfg
     conv_cfg["agent"] = agent_cfg
 
-    # 5. Minimize the workflow — keep only a start node so the main agent
-    # prompt handles the entire conversation (no per-node overrides).
+    # 5. Minimize the workflow — single start node
+    # 6. Set up data_collection for post-call webhook email routing
+    ps = agent.get("platform_settings", {})
+    ps["data_collection"] = build_data_collection("config/directory.yml")
+
     payload = {
         "conversation_config": conv_cfg,
+        "platform_settings": ps,
         "workflow": {
             "nodes": {
                 "start_node": {
@@ -287,11 +361,17 @@ def update_agent(api_key: str, agent_id: str, prompt: str) -> None:
         print(f"Error {r.status_code}: {r.text}")
         r.raise_for_status()
 
+    result = r.json()
+    dc_fields = list(
+        result.get("platform_settings", {}).get("data_collection", {}).keys()
+    )
+
     print(f"Agent {agent_id} updated — serverless mode enabled.")
     print(f"  - Custom webhook tools removed (tool_ids cleared)")
     print(f"  - Workflow cleared — single-agent mode")
     print(f"  - System tools: end_call, language_detection, transfer_to_number")
     print(f"  - Transfer destinations: {len(transfer_tool['params']['transfers'])} staff members")
+    print(f"  - Data collection fields: {dc_fields}")
 
 
 def main() -> None:
