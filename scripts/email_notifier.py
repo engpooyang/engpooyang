@@ -101,18 +101,29 @@ def process_conversation(client: httpx.Client, conv: dict) -> bool:
         print(f"  Skipping {conv_id} — spam/filtered")
         return True
 
+    email_body = (
+        f"<h3>Call Summary</h3>"
+        f"<p><b>From:</b> {contact_number}</p>"
+        f"<p><b>Caller Name:</b> {caller_name}</p>"
+        f"<p><b>Company:</b> {caller_company}</p>"
+        f"<p><b>Purpose:</b> {purpose}</p>"
+        f"<p><b>Intended Recipient:</b> {intended_recipient}</p>"
+        f"<p><b>Classification:</b> {classification}</p>"
+        f"<p><b>Transfer Status:</b> {transfer_status}</p>"
+        f"<h4>Transcript Summary</h4>"
+        f"<p>{transcript_summary}</p>"
+    )
+
+    subject_suffix = ""
+    if caller_name:
+        subject_suffix += f" - {caller_name}"
+    if caller_company:
+        subject_suffix += f" / {caller_company}"
+
     payload = {
-        "type": "post_call_transcription",
-        "caller_name": caller_name,
-        "caller_company": caller_company,
-        "contact_number": contact_number,
-        "call_purpose_summary": purpose,
-        "call_classification": classification,
-        "transfer_status": transfer_status,
-        "intended_recipient": intended_recipient,
         "recipient_email": recipient_email,
-        "transcript_summary": transcript_summary,
-        "conversation_id": conv_id,
+        "email_subject": f"New call via AI receptionist{subject_suffix}",
+        "email_body": email_body,
     }
 
     ok = send_email_via_zapier(client, payload)
